@@ -1,1 +1,1 @@
-Exercises for Thinking In Java by Bruce Eckel
+Exercises for "Thinking In Java" by Bruce Eckel
