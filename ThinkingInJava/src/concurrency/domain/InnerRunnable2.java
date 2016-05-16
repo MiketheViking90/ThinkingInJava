@@ -1,0 +1,36 @@
+package concurrency.domain;
+
+import java.util.concurrent.TimeUnit;
+
+public class InnerRunnable2 {
+
+    private int countDown = 5;
+    private Thread t;
+
+    public InnerRunnable2(String name) {
+        t = new Thread(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            while (true) {
+                                System.out.println(this);
+                                if (--countDown == 0) {
+                                    return;
+                                }
+                                TimeUnit.MILLISECONDS.sleep(100);
+                            }
+                        } catch (InterruptedException e) {
+                            System.out.println("interuppted");
+                        }
+                    }
+
+                    @Override
+                    public String toString() {
+                        return name + ": " + countDown;
+                    }
+                },
+            name );
+        t.start();
+    }
+}
