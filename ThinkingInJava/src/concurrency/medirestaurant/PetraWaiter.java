@@ -26,7 +26,7 @@ public class PetraWaiter implements Runnable {
 
     private void waitForKebobToBeProduced() throws InterruptedException {
         synchronized(this) {
-            while(bistro.hasKebob()) {
+            while(!bistro.hasKebob()) {
                 wait();
             }
         }

@@ -1,5 +1,7 @@
 package concurrency.medirestaurant;
 
+import java.util.concurrent.TimeUnit;
+
 public class PetraChef implements Runnable {
 
     private static final int NUMBER_OF_FOOD_SUPPLIES = 10;
@@ -29,7 +31,7 @@ public class PetraChef implements Runnable {
     }
 
     private synchronized void waitForKebobConsumption() throws InterruptedException {
-        while (!bistro.hasKebob()) {
+        while (bistro.hasKebob()) {
             wait();
         }
     }
@@ -41,13 +43,14 @@ public class PetraChef implements Runnable {
         }
     }
 
-    private void produceKebob() {
+    private void produceKebob() throws InterruptedException {
         System.out.println("Cooking kebob");
         PetraWaiter waiter = bistro.getWaiter();
         synchronized(waiter) {
             bistro.setKebob(new Kebob(count));
             waiter.notifyAll();
         }
+        TimeUnit.MILLISECONDS.sleep(100);
     }
 
 }
