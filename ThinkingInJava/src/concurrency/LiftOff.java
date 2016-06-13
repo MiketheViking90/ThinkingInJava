@@ -11,6 +11,9 @@ public class LiftOff implements Runnable {
     private int id = taskCount++;
 
     public LiftOff() {
+    }
+
+    public LiftOff(int countDown) {
         this.countDown = countDown;
     }
 
