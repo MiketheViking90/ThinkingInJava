@@ -80,4 +80,5 @@ public class EatingCompetition {
         EatingCompetition comp = new EatingCompetition(eaters, pause);
         comp.startCompetition();
     }
+
 }
