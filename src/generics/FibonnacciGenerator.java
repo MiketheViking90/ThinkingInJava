@@ -3,10 +3,12 @@ package generics;
 import java.util.Iterator;
 
 import generics.abst.Generator;
+import lombok.Getter;
 
 public class FibonnacciGenerator implements Generator<Integer>, Iterable<Integer> {
 
     private final int size;
+    @Getter
     private int[] fibs;
     private Iterator<Integer> fibIt;
 
@@ -34,10 +36,8 @@ public class FibonnacciGenerator implements Generator<Integer>, Iterable<Integer
         fibs[0] = 1;
         fibs[1] = 1;
 
-        System.out.print(1 + ", " + 1 + ", ");
         for (int i = 2; i < size; i++) {
             fibs[i] = (fibs[i - 1] + fibs[i - 2]);
-            System.out.print(fibs[i] + ", ");
         }
     }
 
